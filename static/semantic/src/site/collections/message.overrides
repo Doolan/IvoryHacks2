@@ -1,0 +1,6 @@
+/*******************************
+        Site Overrides
+*******************************/
+@secondaryInvertedActiveBackground: #990000
+@secondaryInvertedActiveColor: #990000
+@secondaryInvertedColor: #800000

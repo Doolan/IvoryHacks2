@@ -1,0 +1,340 @@
+{% extends "templates/base.html" %}
+{% block header %}
+<script src="/static/js/rosefire.js"></script>
+<script src="/static/js/login.js"></script>
+<script src="/static/js/index.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/index.css">
+<link rel="stylesheet" type="text/css" href="/static/mobile.css">
+{% endblock %}
+{% block content %}
+
+<!-- Following Menu -->
+<div class="ui large top fixed menu inverted transition hidden">
+    <div class="ui container">
+        <div class="header item">C:\Rose-Hulman\Hackers> &nbsp; cd</div>
+        <select class="ui  transparent search dropdown item">
+            <option value="">Type a directory</option>
+            <option value="about">About</option>
+            <option value="challenges">Challenges</option>
+            <option value="company">Company Information</option>
+            <option value="registration">Registration</option>
+            <option value="schedule">Schedule</option>
+            <option value="sponsors">Sponsors</option>
+            <option value="FAQ">FAQ</option>
+        </select>
+    </div>
+</div>
+
+<!-- Sidebar Menu -->
+<!--<div class="ui vertical inverted sidebar menu left">
+    <a class="active item">Home</a>
+    <a class="item login-btn">Login</a>
+    <a class="item">Signup</a>
+</div>-->
+
+
+<!-- Page Contents -->
+<div class="pusher">
+    <!--<div class="ui inverted vertical masthead center aligned segment">-->
+    <div id="home" class="parent-centered">
+        <!--<div class="ui text container ">-->
+        <div class="ui vertical center aligned segment centered-middle">
+            <!--<div class="ui orange left corner massive label" title="Under Construction">
+                <i class="warning sign icon"></i>
+                <p></p>
+            </div>-->
+            <div class="ui text container">
+                <h1 class="ui inverted header">
+                    Ivory Hacks
+                </h1>
+                <h2 class="ui inverted header"> Presented by:</h2>
+                <br/>
+                <img class="ui centered large image" src="static/images/rhh-logo2.png"
+                     alt="Ivory Hacks By Rose Hulman Hackers Logo">
+                <br/>
+                <h2 class="ui inverted header"> January 6th - 7th</h2>
+            </div>
+            <div class="vertical-spacer"></div>
+            <div class="vertical-spacer"></div>
+            <div class="vertical-spacer"></div>
+            <div class="ui container">
+                <div class="ui large secondary inverted pointing menu">
+                    <a class="toc item">
+                        <i class="sidebar icon"></i>
+                    </a>
+                    <div class="header item">C:\Rose-Hulman\Hackers> &nbsp; cd</div>
+                    <select class="ui fluid transparent search dropdown item">
+                        <option value="">Type a directory</option>
+                        <option value="about">About</option>
+                        <option value="challenges">Challenges</option>
+                        <option value="company">Company Information</option>
+                        <option value="registration">Registration</option>
+                        <option value="schedule">Schedule</option>
+                        <option value="sponsors">Sponsors</option>
+                        <option value="FAQ">FAQ</option>
+                    </select>
+                </div>
+            </div>
+            <!--</div>-->
+        </div>
+    </div>
+    <div class="about page" id="about">
+        <div class="ui vertical stripe segment">
+            <div class="ui centered">
+                <h1 class="ui section header">About</h1>
+            </div>
+            <div class="ui container">
+                <p>Ivory Hacks is Rose-Hulman Institute of Technology's first 24-hour hackathon. <br/>On the weekend of
+                    <strong>January 6th</strong>,
+                    we're assembling 100 college students from all skill levels and backgrounds to get their hands dirty
+                    using technology
+                    and design to build innovative solutions to problems we didn’t know we have. At the end of the
+                    event, the participants
+                    demonstrate their projects to fellow hackers, visitors, and a panel of judges. Made for</p>
+            </div>
+        </div>
+    </div>
+    <!--<hr/>-->
+    <div class="challenges page" id="challenges">
+        <div class="ui vertical stripe segment">
+            <div class="ui centered">
+                <h1 class="ui section header">Challenges</h1>
+            </div>
+            <div class="ui middle aligned stackable grid container">
+                <div class="row">
+                    <div class="eight wide column">
+                        <h3 class="ui header">Made for beginners</h3>
+                        <p>Ivory Hacks has a Beginner Challenge aimed specifically at Freshman and Sophomore programmers
+                            who have attended no
+                            more than two Hackathons.<br/><br/> We will provide introductory classes on the latest
+                            Hackathon Tools and Code Stacks.
+                            We have publicly available starting repos and we will provide project advisors to serve as
+                            mentors and clients.</p>
+
+                        <div class="six wide right floated column">
+                            <!--<img src="images/cocaine_generic_0.jpg" class="ui large bordered rounded image">-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui middle aligned stackable grid container">
+                <div class="row">
+                    <div class="six wide column">
+                        <!--<img src="images/cocaine_generic_0.jpg" class="ui large bordered rounded image">-->
+                    </div>
+                    <div class="eight wide right floated column">
+                        <h3 class="ui header">But, we have something special for our veterans</h3>
+                        <p>Our Three Hat Challenge: Pull a frontend, backend, and a topic from top hats; Repeat 3 times;
+                            Select one of the combinations.</p>
+                        <h4 class="ui header">GOOD LUCK!</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="ui middle aligned stackable grid container">
+                <div class="row">
+                    <div class="eight wide  column">
+                        <h3 class="ui header">And Salesmanship will be rewarded</h3>
+                        <p>The Ten Buzzword Challenge: No good software is complete without creative packaging. From
+                            Scalable Collaboration tools
+                            that Leverage the Power of the Cloud to Cross-Platform Mobile Solutions that use Big Data to
+                            increase Synergy, what
+                            we all actually want out of software is to sound cool describing it.<br/> <br/> All entries
+                            must be compatible with
+                            at least 10 of our preapproved list of overused, misunderstood, inconceivable, shinny,
+                            technology buzzwords.</p>
+                    </div>
+                    <div class="six wide right floated column">
+                        <!--<img src="images/cocaine_generic_0.jpg" class="ui large bordered rounded image">-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="schedule page" id="schedule">
+        <div class="ui vertical stripe segment">
+            <div class="ui centered">
+                <h1 class="ui section header">Schedule</h1>
+            </div>
+            <div class="ui container">
+                <p>Subject to Change</p>
+                <div class="ui stackable two column grid">
+                    <div class="column">
+                        <table class="ui very padded inverted structured table">
+                            <tbody>
+                            <tr>
+                                <td rowspan="2">Friday 6:00 PM</td>
+                                <td>Company Check in Opens</td>
+                            </tr>
+                            <tr>
+                                <td>Volunteer Check in Opens</td>
+                            </tr>
+                            <tr>
+                                <td>Friday 7:00 PM</td>
+                                <td>Student Check In Begins</td>
+                            </tr>
+                            <tr>
+                                <td>Friday 7:40 PM</td>
+                                <td>Opening Ceremonies</td>
+                            </tr>
+                            <tr class="announcement">
+                                <td>Friday 8:00 PM</td>
+                                <td><strong>HACKING STARTS</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Friday 9:00 PM</td>
+                                <td class="food">Late Dinner/Snack</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="3">Friday Evening TBD</td>
+                                <td>Tech Talk 1</td>
+                            </tr>
+                            <tr>
+                                <td>Tech Talk 2</td>
+                            </tr>
+                            <tr>
+                                <td>Tech Talk 3</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="column">
+                        <table class="ui very padded inverted structured table">
+                            <tbody>
+                            <tr>
+                                <td>Saturday 12:30 AM</td>
+                                <td>Late Night Snack</td>
+                            </tr>
+                            <tr>
+                                <td>Saturday 6:30 AM</td>
+                                <td>Breakfast</td>
+                            </tr>
+                            <tr>
+                                <td>Saturday 11:30 AM</td>
+                                <td>Lunch</td>
+                            </tr>
+                            <tr>
+                                <td>Saturday 4:00 PM</td>
+                                <td>Light Meal</td>
+                            </tr>
+                            <tr>
+                                <td>Saturday 6:30 PM</td>
+                                <td>Snack Break</td>
+                            </tr>
+                            <tr class="announcement">
+                                <td>Saturday 8 PM</td>
+                                <td><strong>HACKING ENDS</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Saturday 8:30 - 9:30 PM</td>
+                                <td>Presentation</td>
+                            </tr>
+                            <tr>
+                                <td>Saturday 9:45 PM</td>
+                                <td>Awards</td>
+                            </tr>
+                            <tr>
+                                <td>Saturday 10:15 PM - Midnight</td>
+                                <td>After Party</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sponsors page" id="sponsors">
+        <div class="ui vertical stripe segment">
+            <div class="ui centered">
+                <h1 class="ui section header">Sponsors</h1>
+            </div>
+            <div class="ui container">
+                <h2 class="ui header">
+                    <i class="spinner icon"></i>
+                    <div class="content">
+                        Coming Soon
+                        <div class="sub header">Interested in sponsoring Ivory Hacks? Contact us at
+                            doolansr@rose-hulman.edu
+                        </div>
+                    </div>
+                </h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="join page" id="join">
+        <div class="ui vertical stripe segment">
+            <div class="ui centered">
+                <h1 class="ui section header">Join Us</h1>
+            </div>
+            <div class="ui container">
+                <div class="ui stackable two column  grid">
+                    <div class="column">
+                        <div class="ui raised centered card">
+                            <div class="content">
+                                <h2 class="ui header  ">
+                                    <i class="massive user icon"></i>
+                                    <div class="content">
+                                        Students
+                                        <div class="sub header">
+                                            <div class="ui primary basic button" onclick="rosefire_login_click()">
+                                                <!--<i class="external icon"></i>-->
+                                                Login Using RoseFire
+                                            </div>
+                                        </div>
+                                    </div>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="ui raised centered card">
+                            <div class="content">
+                                <h2 class="ui header  ">
+                                    <i class="huge building icon"></i>
+                                    <div class="content">
+                                        Companies
+                                        <div class="sub header">
+                                            <div class="ui blue basic button">
+                                                <i class="mail icon"></i>
+                                                Email the Organizers
+                                            </div>
+                                        </div>
+                                    </div>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--<div class="ui inverted vertical footer segment">-->
+    <!--<div class="ui container">-->
+    <!--<div class="ui stackable inverted divided equal height stackable grid">-->
+    <!--<div class="three wide column">-->
+    <!--<h4 class="ui inverted header">About</h4>-->
+    <!--<div class="ui inverted link list">-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="three wide column">-->
+    <!--<h4 class="ui inverted header">Helpful links and References</h4>-->
+    <!--<div class="ui inverted link list">-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="seven wide column">-->
+    <!--<h4 class="ui inverted header">Disclaimers and Acknowledgement</h4>-->
+    <!--<p></p>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <div class=" layer2" id="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1539.684706747017!2d-87.32746273789921!3d39.483572327324204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x886d6e449ae78793%3A0x60f212402de7fda6!2sRose-Hulman+SRC!5e0!3m2!1sen!2sus!4v1454377280123"
+                height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends "templates/internal-base.html" %}
+
+{% block additional_tags_right %}
+{% if is_self %}
+<a class="item profile" onclick="launchModal()"><strong>Settings</strong></a>
+{% endif %}
+{% endblock %}
+
+
+{% block content %}
+<script src="/static/js/profile.js"></script>
+
+<div class="ui container">
+    <div class="ui relaxed grid">
+        <div class="row">
+            <div class="eight wide column">
+                
+                
+                {% if user.image_blob_key %}
+                <img class="ui medium bordered image" src="img/{{ user.image_blob_key }}">
+                {% else %}
+                <img class="ui medium bordered image" src="static/images/Harambe.jpg">
+                {% endif %}
+                
+            </div>
+            <div class="eight wide column">
+                <h1 class="ui header">{{ user.name }}</h1>
+                <h3 class="ui header"><em>{{ user.username }}</em></h3>
+                <a href="mailto:{{user.username}}@rose-hulman.edu?subject=AskASenior" targer="_top">
+                    <h3 class="ui blue header" style="clear:both">{{ user.email }}
+                        <!--<i class="mail icon"></i></h3>-->
+                    </h3>
+                </a>
+                <!--<h3 class="ui header blue">doolansr@rose-hulman.edu</h3>-->
+                <div class="vertical-half-spacer"></div>
+                <div class="ui message ">{{ user.description }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modals -->
+
+<div class="ui small modal" id="userSettingsModal">
+    <div class="header">Add a Post</div>
+    <div class="content">
+        <form class="ui form" id="userSettingForm" enctype="multipart/form-data" 
+        	action="{{ form_action }}" method="POST">
+            <div class="field">
+                <label>Profile Image</label>
+                <input id="img-input" type="file" hidden name="image_attachment" class="">
+                <div class="ui left input">
+                    <button id="image-upload-btn" class="ui primary labeled icon button">
+                        Upload an Image
+                    </button>
+                    <input type="text" id="filepath" disabled>
+                </div>
+            </div>
+
+            <!--<div class="two fields">-->
+            <!--<div class="required field">-->
+            <!--<label>First Name</label>-->
+            <!--<input type="text" name="first-name" placeholder="First Name" ng-model="UserFormData.firstName">-->
+            <!--</div>-->
+            <!--<div class="required field">-->
+            <!--<label>Last Name</label>-->
+            <!--<input type="text" name="last-name" placeholder="Last Name" ng-model="UserFormData.lastName">-->
+            <!--</div>-->
+            <!--</div>-->
+            <div class="field">
+                <label>Profile Description:</label>
+                <textarea rows="3" name="profile-description"
+                          placeholder="Enter or Edit Your Profile Description">{{ user.description }}</textarea>
+            </div>
+            <div class="ui error message"></div>
+            <input type="submit" value="Save" class="ui primary button right floated button">
+            <div class="actions">
+		        <div class="ui cancel grey basic button">Cancel</div>
+		        <!-- <div id="profile-save-btn" class="ui approve primary button">Save</div> -->
+		    </div>
+        </form>
+        <!--<div class="vertical-half-spacer"></div>-->
+    </div>
+
+</div>
+
+<!-- end Modals -->
+
+{% endblock %}

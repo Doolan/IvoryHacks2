@@ -1,0 +1,106 @@
+h1.ui.section.header {
+    /*padding-top: 0.5em;*/
+    margin-bottom: .2em;
+    font-size: 3.5em;
+    font-weight: normal;
+    font-family: 'Bungee Shade', cursive;
+    text-align: center;
+    /*font-family: 'Permanent Marker', cursive;*/
+}
+
+#home h1.ui.header {
+    /*margin-top: 1em;*/
+    margin-bottom: 0em;
+    font-size: 5em;
+    font-weight: normal;
+    font-family: 'Bungee Shade', cursive;
+    /*font-family: 'Permanent Marker', cursive;*/
+}
+
+#home h2 {
+    font-size: 1.7em;
+    font-weight: normal;
+    /*font-family: 'Open Sans', sans-serif;*/
+    font-family: 'Roboto', sans-serif;
+}
+
+#home h3 {
+    font-size: 1.5em;
+    font-weight: normal;
+    /*font-family: 'Open Sans', sans-serif;*/
+    font-family: 'Roboto', sans-serif;
+}
+
+#home {
+    background: url('images/RHIT_Self_Made_Man-1_dark.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+#home .ui.secondary.inverted.pointing.menu {
+    /*background-color: #000000;*/
+    background-color: rgba(77, 77, 77, 0.5);
+    /*color: #1A531B;*/
+    border: none;
+}
+
+#about {
+    background: url('images/random_grey_variations_@2X.png') repeat center center;
+    padding: 1em;
+}
+
+#about *{
+    color:#FFFFFF;
+}
+
+#challenges {
+    background: url('images/RHIT_Self_Made_Man-10_dark.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 100vh;
+    padding:1em;
+}
+#challenges *{
+    color:#FFFFFF;
+}
+
+#schedule {
+    background: url('images/congruent_outline.png') repeat center center ;
+    padding: 1em;
+}
+#schedule *{
+    color:#FFFFFF;
+}
+
+#sponsors {
+    background: url('images/White-Chapel_dark.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 75vh;
+    padding:1em;
+}
+#sponsors *{
+    color:#FFFFFF;
+}
+
+#join {
+    /*background-color: #A7BCD6;*/
+    padding: 2em 0 3em 0;
+    /*width: 100%;*/
+    /*min-height: 100vh;*/
+    background: url('images/escheresque_ste_@2X.png') repeat center center;
+}
+#join .section.header {
+    color:#FFFFFF;
+}
+
+#map iframe {
+    width: 100vw;
+}

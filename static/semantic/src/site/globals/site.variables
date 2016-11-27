@@ -1,0 +1,13 @@
+/*******************************
+     User Global Variables
+*******************************/
+@primaryColor   : #800000;
+@secondaryColor : @grey;
+@orange         : #E87722;
+@yellow         : #DFD1A7;
+@olive          : #DECD63;
+@teal           : #A7BCD6;
+@blue           : #4F758B;
+@brown          : #6C571B;
+@grey           : #54585A;
+@black          : #800000;

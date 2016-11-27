@@ -1,0 +1,211 @@
+{% extends "templates/internal-base.html" %}
+
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="/static/register.css">
+    <!-- knockout -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js" type="text/javascript"
+            charset="utf-8"></script>
+    <script src="/static/js/register.js"></script>
+
+    <div class="ui container">
+        <div hidden class="ui fluid card" style="inherit: none;" id="hackathon-card">
+            <div class="content">
+                <h1 class="">
+                    <i class="keyboard icon"></i>
+                    Hackathon
+                </h1>
+            </div>
+            <div class="content form-body">
+                <form class="ui form" id="hackathon-form">
+                    <div class="ui required field">
+                        <label>Role:</label>
+                        <div class="ui equal width fluid inline fields">
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="role" tabindex="0" class="hidden">
+                                    <label>Competitor</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="role" tabindex="1" class="hidden">
+                                    <label>Volunteer</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="two fields">
+                        <div class="required field">
+                            <label>T-Shirt Size</label>
+                            <select class="ui search dropdown" name="tsize">
+                                <option value="">Size</option>
+                                <option value="s">Small</option>
+                                <option value="m">Medium</option>
+                                <option value="l">Large</option>
+                                <option value="xl">X-Large</option>
+                            </select>
+                        </div>
+                        <div class="required field">
+                            <label>Hack Type:</label>
+                            <select class="ui search dropdown" name="hacktype">
+                                <option value="">Hack</option>
+                                <option value="software">Software</option>
+                                <option value="hardware">Hardware</option>
+                                <option value="both">Both</option>
+                                <option value="volunteer">None - Volunteer</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="required field">
+                        <label>Dietary Restrictions:</label>
+                        <textarea rows="2" name="diet" placeholder=""></textarea>
+                    </div>
+                    <div class="ui error message"></div>
+                </form>
+            </div>
+            <div class="extra content">
+                <div class="ui primary basic right floated button">Next</div>
+            </div>
+        </div>
+        <div class="ui fluid card" style="display: inherit;" id="employment-card">
+            <div class="content">
+                <h1 class="">
+                    <i class="building icon"></i>
+                    Employment
+                </h1>
+            </div>
+            <div class="content form-body">
+                <form class="ui form" id="employment-form">
+                    <div class="required field">
+                        <label>Graduation Year:</label>
+                        <input type="text" name="grad-year" placeholder="Graduation Year">
+                    </div>
+                    <div class="two fields">
+                        <div class="required field">
+                            <label>Primary Major:</label>
+                            <select class="ui search dropdown" data-bind="foreach: majorOptions">
+                                <option data-bind="value: $data, text: $data "></option>
+                            </select>
+                        </div>
+                        <div class="required field">
+                            <label>Secondary Major or Minor:</label>
+                            <select class="ui search dropdown" data-bind="foreach: secondaryOptions">
+                                <option data-bind="value: $data, text: $data "></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="ui required field">
+                        <label>Employment Status:</label>
+                        <div class="ui equal width fluid inline fields">
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="status" tabindex="0" class="hidden">
+                                    <label>Employed</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="status" tabindex="0" class="hidden">
+                                    <label>Seeking Internship</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="status" tabindex="0" class="hidden">
+                                    <label>Seeking Full time</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="status" tabindex="0" class="hidden">
+                                    <label>Grad School</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui error message"></div>
+                </form>
+            </div>
+            <div class="extra content">
+                <div class="ui primary basic right floated button">Next</div>
+            </div>
+        </div>
+
+        <div hidden class="ui fluid card" style="display: inherit;" id="resume-card">
+            <div class="content">
+                <h1 class="">
+                    <i class="file pdf outline icon"></i>
+                    Resume
+                </h1>
+            </div>
+            <div class="content form-body">
+                <form class="ui form" id="userSettingForm" enctype="multipart/form-data"
+                      action="{{ form_action }}" method="POST">
+                    <div class="required field">
+                        <label>Resume</label>
+                        <input id="resume-input" type="file" hidden name="resume_attachment" class="">
+                        <div class="ui left input">
+                            <button id="resume-upload-btn" class="ui primary labeled icon button">
+                                Upload a Resume
+                            </button>
+                            <input type="text" id="filepath" disabled>
+                        </div>
+                    </div>
+                    <div class="ui error message"></div>
+                </form>
+            </div>
+            <div class="extra content">
+                <div class="ui primary basic right floated button">Next</div>
+            </div>
+        </div>
+        <div hidden class="ui fluid card" style="display: none;" id="confirm-card">
+            <div class="content">
+                <h1 class="">
+                    <i class="send outline icon"></i>
+                    Confirm
+                </h1>
+            </div>
+            <div class="content form-body">
+
+            </div>
+            <div class="extra content">
+                <div class="ui primary basic right floated button">Confirm</div>
+            </div>
+        </div>
+
+        <div class="ui fluid steps">
+            <div class="active step">
+                <i class="keyboard icon"></i>
+                <div class="content">
+                    <div class="title">Hackathon</div>
+                    <div class="description">Diet, Swag, Misc</div>
+                </div>
+            </div>
+            <div class="disabled step">
+                <i class="building icon"></i>
+                <div class="content">
+                    <div class="title">Employment</div>
+                    <div class="description">What companies <br/>need to know</div>
+                </div>
+            </div>
+            <div class="disabled step">
+                <i class="file pdf outline icon"></i>
+                <div class="content">
+                    <div class="title">Resume</div>
+                    <div class="description">Upload your Resume</div>
+                </div>
+            </div>
+            <div class="disabled step">
+                <i class="send outline icon"></i>
+                <div class="content">
+                    <div class="title">Confirm</div>
+                    <div class="description">Confirm your application</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="vertical-spacer"></div>
+    <div class="vertical-spacer"></div>
+
+{% endblock %}

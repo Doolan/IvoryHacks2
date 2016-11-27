@@ -1,0 +1,31 @@
+{% extends "templates/base.html" %}
+{% block header %}
+<script src="/static/js/rosefire.js"></script>
+<script src="/static/js/login.js"></script>
+{% endblock %}
+{% block nav %}
+
+<div class="ui inverted primary fixed top menu">
+    <div class="item">
+        <img class="image" src="/static/images/RH_R.png">
+    </div>
+    <div class="item">
+        <h2 class="heading brand" style=" font-family: 'Bungee Shade', 'Roboto', sans-serif; font-size: 2.2em;">Ivory Hacks</h2>
+    </div>
+    <!--<a href="/post-list" class="item posts" onclick="">Posts</a>-->
+    <!--<a href="/profile" class="item profile">Profile</a>-->
+    {% block additional_tags_left %}{% endblock %}
+    <div class="right menu">
+        {% block additional_tags_right %}{% endblock %}
+        <a href="/logout" class="item logout" onclick="">Logout</a>
+    </div>
+</div>
+<div class="vertical-spacer"></div>
+<div class="vertical-spacer"></div>
+<div class="vertical-spacer"></div>
+<div class="vertical-spacer"></div>
+
+{% endblock %}
+{% block content %}{% endblock %}
+{% block posts %}{% endblock %}
+{% block dialogs %}{% endblock %}
