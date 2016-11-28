@@ -65,10 +65,10 @@
                 </form>
             </div>
             <div class="extra content">
-                <div class="ui primary basic right floated button">Next</div>
+                <div class="ui primary basic right floated button" ng-bind="click: $root.advanceToEmployment">Next</div>
             </div>
         </div>
-        <div class="ui fluid card" style="display: inherit;" id="employment-card">
+        <div class="ui fluid card" style="display: none;" id="employment-card">
             <div class="content">
                 <h1 class="">
                     <i class="building icon"></i>
@@ -79,18 +79,18 @@
                 <form class="ui form" id="employment-form">
                     <div class="required field">
                         <label>Graduation Year:</label>
-                        <input type="text" name="grad-year" placeholder="Graduation Year">
+                        <input type="text" name="gradYear" placeholder="Graduation Year">
                     </div>
                     <div class="two fields">
                         <div class="required field">
                             <label>Primary Major:</label>
-                            <select class="ui search dropdown" data-bind="foreach: majorOptions">
+                            <select class="ui search dropdown" name="major" data-bind="foreach: majorOptions">
                                 <option data-bind="value: $data, text: $data "></option>
                             </select>
                         </div>
                         <div class="required field">
                             <label>Secondary Major or Minor:</label>
-                            <select class="ui search dropdown" data-bind="foreach: secondaryOptions">
+                            <select class="ui search dropdown" name="secondary" data-bind="foreach: secondaryOptions">
                                 <option data-bind="value: $data, text: $data "></option>
                             </select>
                         </div>
@@ -106,19 +106,19 @@
                             </div>
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" name="status" tabindex="0" class="hidden">
+                                    <input type="radio" name="status" tabindex="1" class="hidden">
                                     <label>Seeking Internship</label>
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" name="status" tabindex="0" class="hidden">
+                                    <input type="radio" name="status" tabindex="2" class="hidden">
                                     <label>Seeking Full time</label>
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" name="status" tabindex="0" class="hidden">
+                                    <input type="radio" name="status" tabindex="3" class="hidden">
                                     <label>Grad School</label>
                                 </div>
                             </div>
@@ -132,7 +132,7 @@
             </div>
         </div>
 
-        <div hidden class="ui fluid card" style="display: inherit;" id="resume-card">
+        <div hidden class="ui fluid card" style="display: none;" id="resume-card">
             <div class="content">
                 <h1 class="">
                     <i class="file pdf outline icon"></i>
@@ -175,28 +175,28 @@
         </div>
 
         <div class="ui fluid steps">
-            <div class="active step">
+            <div class="active step" id="hackstep">
                 <i class="keyboard icon"></i>
                 <div class="content">
                     <div class="title">Hackathon</div>
                     <div class="description">Diet, Swag, Misc</div>
                 </div>
             </div>
-            <div class="disabled step">
+            <div class="disabled step" id="employmentstep">
                 <i class="building icon"></i>
                 <div class="content">
                     <div class="title">Employment</div>
                     <div class="description">What companies <br/>need to know</div>
                 </div>
             </div>
-            <div class="disabled step">
+            <div class="disabled step" id="resumestep">
                 <i class="file pdf outline icon"></i>
                 <div class="content">
                     <div class="title">Resume</div>
                     <div class="description">Upload your Resume</div>
                 </div>
             </div>
-            <div class="disabled step">
+            <div class="disabled step" id="confirmstep">
                 <i class="send outline icon"></i>
                 <div class="content">
                     <div class="title">Confirm</div>

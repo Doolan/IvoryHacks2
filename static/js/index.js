@@ -3,7 +3,7 @@ $(document).ready(function () {
 });
 
 var menuSetup = function () {
-    $('.masthead')
+    $('#home')
         .visibility({
             once: false,
             onBottomPassed: function () {
@@ -24,4 +24,13 @@ var menuSetup = function () {
 
 var setup = function () {
     menuSetup();
+    $(".search.dropdown").dropdown({
+        onChange: function (val) {
+            console.log(val);
+            $('html, body').animate({
+                scrollTop: $('#' + val).offset().top
+            }, 1000);
+            //$.scrollTo($('#' + val), 1000);
+        }
+    });
 };

@@ -34,7 +34,7 @@ var resumeUploadSetup = function () {
 var formSetup = function () {
     $('#hackathon-form').form({
         fields: {
-            role: 'empty',
+            role: 'checked',
             tsize: 'empty',
             hacktype: 'empty',
             diet: 'empty'
@@ -47,20 +47,36 @@ var formSetup = function () {
             // return;
         },
         keyboardShortcuts: false
+    });
+
+    $('#employment-form').form({
+        fields: {
+            gradYear: 'empty',
+            major: 'empty',
+            secondary: 'empty',
+            status: 'checked'
+        },
+        onSuccess: function (event, fields) {
+            console.log(fields);
+        },
+        onFailure: function (formErrors, fields) {
+            console.log(fields);
+        },
+        keyboardShortcuts: false
     })
 };
 
 var FormModel = function (user) {
     var self = this;
-    self.role = ko.observable();
-    self.tshirt_size = ko.observable();
-    self.hacktype = ko.observable();
-    self.dietaryRestrictions = ko.observable();
-    self.gradYear = ko.observable();
-    self.primaryMajor = ko.observable();
-    self.secondaryMajor = ko.observable();
-    self.employmentStatus = ko.observable();
-    self.resume_attachment = ko.observable();
+    // self.role = ko.observable();
+    // self.tshirt_size = ko.observable();
+    // self.hacktype = ko.observable();
+    // self.dietaryRestrictions = ko.observable();
+    // self.gradYear = ko.observable();
+    // self.primaryMajor = ko.observable();
+    // self.secondaryMajor = ko.observable();
+    // self.employmentStatus = ko.observable();
+    // self.resume_attachment = ko.observable();
 
     self.majorOptions = ["", "Biochemistry", "Biomedical Engineering", "Biology", "Chemical Engineering", "Chemistry", "Civil Engineering", "Computer Engineering", "Software Engineering", "Electrical Engineering", "Mechanical Engineering", "Engineering Physics", "Physics"];
     self.majorOptions.sort();
@@ -68,4 +84,16 @@ var FormModel = function (user) {
     self.secondaryOptions = [" N/A", "Robotics", "Computational Science", "Data Science", "Statistics"];
     self.secondaryOptions = self.secondaryOptions.concat(self.majorOptions);
     self.secondaryOptions.sort().push('Not Listed');
+
+    self.hackathonValues ={};
+    self.advanceToEmployment = function(){
+        $('#hackathon-form').form('validate form');
+        if($('#hackathon-form').form('is valid')){
+            self.hackathonValues = $('#hackathon-form').form('get values');
+            $('#hackathon-card').hide();
+            $('#employment-card').show();
+            $('#hackstep').removeClass('active').removeClass('completed').addClass('completed');
+            $('#employmentstep').removeClass('disabled').removeClass('completed').addClass('active');
+        }
+    };
 };
