@@ -78,22 +78,63 @@ var FormModel = function (user) {
     // self.employmentStatus = ko.observable();
     // self.resume_attachment = ko.observable();
 
-    self.majorOptions = ["", "Biochemistry", "Biomedical Engineering", "Biology", "Chemical Engineering", "Chemistry", "Civil Engineering", "Computer Engineering", "Software Engineering", "Electrical Engineering", "Mechanical Engineering", "Engineering Physics", "Physics"];
+    self.majorOptions = ["", "Biochemistry", "Biomedical Engineering", "Biology", "Chemical Engineering", "Chemistry", "Civil Engineering", "Computer Engineering", "Computer Science", "Software Engineering", "Electrical Engineering", "Mechanical Engineering", "Engineering Physics", "Physics", "Mathematics"];
     self.majorOptions.sort();
 
     self.secondaryOptions = [" N/A", "Robotics", "Computational Science", "Data Science", "Statistics"];
     self.secondaryOptions = self.secondaryOptions.concat(self.majorOptions);
     self.secondaryOptions.sort().push('Not Listed');
 
-    self.hackathonValues ={};
-    self.advanceToEmployment = function(){
+    self.hackathonValues = {};
+    self.employmentValues = {};
+
+    self.advanceToEmployment = function () {
         $('#hackathon-form').form('validate form');
-        if($('#hackathon-form').form('is valid')){
+        if ($('#hackathon-form').form('is valid')) {
             self.hackathonValues = $('#hackathon-form').form('get values');
             $('#hackathon-card').hide();
             $('#employment-card').show();
-            $('#hackstep').removeClass('active').removeClass('completed').addClass('completed');
+            $('#hackstep').removeClass('active').addClass('completed');
             $('#employmentstep').removeClass('disabled').removeClass('completed').addClass('active');
         }
     };
+
+    $('#hackathon-card .extra.content .button').click(self.advanceToEmployment);
+    self.advanceToResume = function () {
+        $('#employment-form').form('validate form');
+        if ($('#employment-form').form('is valid')) {
+            self.employmentValues = $('#employment-form').form('get values');
+            $('#employment-card').hide();
+            $('#resume-card').show();
+            $('#employmentstep').removeClass('active').addClass('completed');
+            $('#resumestep').removeClass('disabled').removeClass('completed').addClass('active');
+        }
+    };
+    $('#employment-card .extra.content .button').click(self.advanceToResume);
+    self.advanceToConfirm = function () {
+        // $('#employment-form').form('validate form');
+        // if ($('#employment-form').form('is valid')) {
+        //     self.employmentValues = $('#employment-form').form('get values');
+        // $('#resume-card').hide();
+        // $('#confirm-card').show();
+        // $('#resumestep').removeClass('active').addClass('completed');
+        // $('#confirmstep').removeClass('disabled').removeClass('completed').addClass('active');
+        // // }
+        self.updateUser();
+        $('#resumeForm').submit();
+        // console.log(self.hackathonValues, self.employmentValues);
+    };
+    $('#resume-card .extra.content .button').click(self.advanceToConfirm);
+
+
+    self.updateUser = function(){
+        var merged = {};
+        Object.assign(merged, self.hackathonValues, self.employmentValues);
+        console.log(merged, "merged object");
+        $.post("/update-registration", merged).done(function (data) {
+            console.log("Response JSON: " ,data);
+        }).fail(function (jqxhr, textStatus, error) {
+            console.log("POST Request Failed: " + textStatus + ", " + error);
+        });
+    }
 };

@@ -9,7 +9,7 @@
     <script src="/static/js/register.js"></script>
 
     <div class="ui container">
-        <div hidden class="ui fluid card" style="inherit: none;" id="hackathon-card">
+        <div hidden class="ui fluid card" style="display: inherit;" id="hackathon-card">
             <div class="content">
                 <h1 class="">
                     <i class="keyboard icon"></i>
@@ -23,13 +23,13 @@
                         <div class="ui equal width fluid inline fields">
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" name="role" tabindex="0" class="hidden">
+                                    <input type="radio" name="role" value="Competitor" tabindex="0" class="hidden">
                                     <label>Competitor</label>
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" name="role" tabindex="1" class="hidden">
+                                    <input type="radio" name="role" value="Volunteer" tabindex="1" class="hidden">
                                     <label>Volunteer</label>
                                 </div>
                             </div>
@@ -59,13 +59,13 @@
                     </div>
                     <div class="required field">
                         <label>Dietary Restrictions:</label>
-                        <textarea rows="2" name="diet" placeholder=""></textarea>
+                        <textarea rows="2" name="diet" placeholder="Enter None if you have no restrictions"></textarea>
                     </div>
                     <div class="ui error message"></div>
                 </form>
             </div>
             <div class="extra content">
-                <div class="ui primary basic right floated button" ng-bind="click: $root.advanceToEmployment">Next</div>
+                <div class="ui primary basic right floated button" >Next</div>
             </div>
         </div>
         <div class="ui fluid card" style="display: none;" id="employment-card">
@@ -100,25 +100,25 @@
                         <div class="ui equal width fluid inline fields">
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" name="status" tabindex="0" class="hidden">
+                                    <input type="radio" name="status" value="Employed" tabindex="0" class="hidden">
                                     <label>Employed</label>
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" name="status" tabindex="1" class="hidden">
+                                    <input type="radio" name="status" value="Seeking Internship" tabindex="1" class="hidden">
                                     <label>Seeking Internship</label>
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" name="status" tabindex="2" class="hidden">
+                                    <input type="radio" name="status" value="Seeking Full Time" tabindex="2" class="hidden">
                                     <label>Seeking Full time</label>
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" name="status" tabindex="3" class="hidden">
+                                    <input type="radio" name="status" value="Grad School" tabindex="3" class="hidden">
                                     <label>Grad School</label>
                                 </div>
                             </div>
@@ -140,7 +140,7 @@
                 </h1>
             </div>
             <div class="content form-body">
-                <form class="ui form" id="userSettingForm" enctype="multipart/form-data"
+                <form class="ui form" id="resumeForm" enctype="multipart/form-data"
                       action="{{ form_action }}" method="POST">
                     <div class="required field">
                         <label>Resume</label>
@@ -156,23 +156,24 @@
                 </form>
             </div>
             <div class="extra content">
-                <div class="ui primary basic right floated button">Next</div>
+                <div class="ui primary basic right floated button" >Confirm & Complete</div>
             </div>
         </div>
-        <div hidden class="ui fluid card" style="display: none;" id="confirm-card">
-            <div class="content">
-                <h1 class="">
-                    <i class="send outline icon"></i>
-                    Confirm
-                </h1>
-            </div>
-            <div class="content form-body">
-
-            </div>
-            <div class="extra content">
-                <div class="ui primary basic right floated button">Confirm</div>
-            </div>
-        </div>
+{#        <div hidden class="ui fluid card" style="display: none;" id="confirm-card">#}
+{#            <div class="content">#}
+{#                <h1 class="">#}
+{#                    <i class="send outline icon"></i>#}
+{#                    Confirm#}
+{#                </h1>#}
+{#            </div>#}
+{#            <div class="content form-body">#}
+{#                <h2>Your Application has been submitted</h2>#}
+{#                <p>If you have any questions or concerns please contact the <a href="mailto:brubakbd@rose-hulman.edu?subject=Ivory Hacks">Rose-Hulman Hackers Internal Vice President</a></p>#}
+{#            </div>#}
+{#            <div class="extra content">#}
+{#                <a href="/logout" class="ui primary basic right floated button">Confirm</a>#}
+{#            </div>#}
+{#        </div>#}
 
         <div class="ui fluid steps">
             <div class="active step" id="hackstep">
@@ -196,16 +197,15 @@
                     <div class="description">Upload your Resume</div>
                 </div>
             </div>
-            <div class="disabled step" id="confirmstep">
-                <i class="send outline icon"></i>
-                <div class="content">
-                    <div class="title">Confirm</div>
-                    <div class="description">Confirm your application</div>
-                </div>
-            </div>
+{#            <div class="disabled step" id="confirmstep">#}
+{#                <i class="send outline icon"></i>#}
+{#                <div class="content">#}
+{#                    <div class="title">Confirm</div>#}
+{#                    <div class="description">Confirm your application</div>#}
+{#                </div>#}
+{#            </div>#}
         </div>
     </div>
     <div class="vertical-spacer"></div>
     <div class="vertical-spacer"></div>
-
 {% endblock %}

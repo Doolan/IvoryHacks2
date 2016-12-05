@@ -8,7 +8,7 @@ from google.appengine.ext import ndb
 from webapp2_extras import sessions
 import handlers
 from models import User
-from handlers import BaseHandler
+from handlers import BaseHandler, BaseBlobstoreHandler
 from rosefire import RosefireTokenVerifier
 
 from google.appengine.api import blobstore
@@ -20,8 +20,7 @@ from utils import post_utils, user_utils
 
 # This normally shouldn't be checked into Git
 ROSEFIRE_SECRET = '5LgLSINSUKGVbkwTw0ue'
-UNIVERSAL_PARENT = ndb.Key("Entity",'DARTH_VADER')
-
+UNIVERSAL_PARENT = ndb.Key("Entity", 'DARTH_VADER')
 
 JINJA_ENV = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -54,7 +53,7 @@ class RegisterHandler(BaseHandler):
             # if username == 'none':
             user_info = json.loads(self.session.get("user_info"))
             user = user_utils.get_user_from_username(user_info["username"])
-            #is_self = True
+            # is_self = True
             print("user info", user_info)
             # else:
             #     userResults = User.query(User.username == username).fetch(limit=1)
@@ -64,10 +63,9 @@ class RegisterHandler(BaseHandler):
             #     else:
             #         user = userResults[0]
 
-            #print("user", user)
+            # print("user", user)
             values = {"user": user}
-
-            # values["form_action"] = blobstore.create_upload_url('/update-profile')
+            values["form_action"] = blobstore.create_upload_url('/update-resume')
 
             template = JINJA_ENV.get_template("templates/register.html")
 
@@ -104,10 +102,10 @@ class ViewProfileHandler(BaseHandler):
 
             print("user", user)
 
-           # query = post_utils.get_query_for_all_nonanonymous_posts_by_user(user)
-            values = {#"post_query": query,
-                      "user": user,
-                      "is_self": is_self}
+            # query = post_utils.get_query_for_all_nonanonymous_posts_by_user(user)
+            values = {  # "post_query": query,
+                "user": user,
+                "is_self": is_self}
 
             values["form_action"] = blobstore.create_upload_url('/update-profile')
 
@@ -146,12 +144,60 @@ class UpdateProfileAction(handlers.BaseBlobstoreHandler):
             userdata.image_blob_key = media_blob.key()
         userdata.description = self.request.get('profile-description')
         userdata.put()
-        #time.sleep(.5)
+        # time.sleep(.5)
         self.redirect("/profile")
 
 
-# self.response.on_completion()
+class UpdateResume(handlers.BaseBlobstoreHandler):
+    def post(self):
+        logging.info("Received an image blob with this data.")
+        userdata = user_utils.get_user_from_rosefire_user(self.user())
+        if len(self.get_uploads()) > 0:
+            media_blob = self.get_uploads()[0]
+            userdata.resume_blob_key = media_blob.key()
+        # userdata.description = self.request.get('profile-description')
+        userdata.put()
+        self.redirect("/logout")
 
+
+class UpdateRegistration(BaseHandler):
+    def post(self):
+        if "user_info" not in self.session:
+            #            raise Exception("Missing user!")
+            self.redirect("/")
+            return
+
+        else:
+            user_utils.get_user_from_rosefire_user(self.user())
+            username = self.request.get('username', 'none')
+            # if username == 'none':
+            user_info = json.loads(self.session.get("user_info"))
+            user = user_utils.get_user_from_username(user_info["username"])
+            # is_self = True
+            print("user info", user_info)
+
+            #userResults = User.query(User.username == username).fetch(limit=1)
+            #if len(userResults) == 0:
+            #    user = User(parent=UNIVERSAL_PARENT, username=user_info.username,
+            #                email=user_info.email, name=user_info.name)
+            #else:
+            #    user = userResults[0]
+            #hackathon
+            user.role = self.request.get('role')
+            user.tsize = self.request.get('tsize')
+            user.hacktype = self.request.get('hacktype')
+            user.diet = self.request.get('diet')
+            #Employment
+            user.gradYear = self.request.get('gradYear')
+            user.major = self.request.get('major')
+            user.secondary = self.request.get('secondary')
+            user.status = self.request.get('status')
+            user.put()
+
+            print("user", user)
+            values = {"status": "success"}
+
+            self.response.out.write(json.dumps(values))
 
 
 config = {}
@@ -167,12 +213,14 @@ app = webapp2.WSGIApplication([
     ('/login', LoginHandler),
     ('/logout', LogoutHandler),
     # Pages
-    #('/post-list', PostListHandler),
-    #('/view-post', ViewPostHandler),
+    # ('/post-list', PostListHandler),
+    # ('/view-post', ViewPostHandler),
     ('/profile', ViewProfileHandler),
     ('/register', RegisterHandler),
     # Actions
-    #('/post', PostAction),
-    #('/insert-reply', InsertReplyAction),
-    ('/update-profile', UpdateProfileAction)
+    # ('/post', PostAction),
+    # ('/insert-reply', InsertReplyAction),
+    ('/update-profile', UpdateProfileAction),
+    ('/update-resume', UpdateResume),
+    ('/update-registration', UpdateRegistration)
 ], config=config, debug=True)

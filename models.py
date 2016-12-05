@@ -17,15 +17,18 @@ class User(ndb.Model):
     username = ndb.StringProperty()
     email = ndb.StringProperty()
     name = ndb.StringProperty()
+
     # questions
+    #Hackathon
+    role = ndb.StringProperty()
+    tsize = ndb.StringProperty()
+    hacktype = ndb.StringProperty()
+    diet = ndb.StringProperty()
 
-    gradyear = ndb.IntegerProperty()
-    primary_major = ndb.IntegerProperty()
-    secondary_major_or_minor = ndb.IntegerProperty()
-    full_time = ndb.BooleanProperty()
-    has_job = ndb.BooleanProperty()
-
-    tshirt_size = ndb.StringProperty()
-    dietary_restrictions = ndb.StringProperty()
+    #Employment
+    gradYear = ndb.StringProperty()
+    major = ndb.StringProperty()
+    secondary = ndb.StringProperty()
+    status = ndb.StringProperty()
 
     resume_blob_key = ndb.BlobKeyProperty()

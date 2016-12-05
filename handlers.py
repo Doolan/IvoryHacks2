@@ -22,7 +22,8 @@ class BlobServer(blobstore_handlers.BlobstoreDownloadHandler):
             self.error(404)
         else:
             self.send_blob(blob_key)
-            
+
+
 class BaseBlobstoreHandler(blobstore_handlers.BlobstoreUploadHandler):
     def dispatch(self):
         # Get a session store for this request.
@@ -38,7 +39,7 @@ class BaseBlobstoreHandler(blobstore_handlers.BlobstoreUploadHandler):
     def session(self):
         # Returns a session using the default cookie key.
         return self.session_store.get_session()
-    
+
     def user(self):
         if "user_info" not in self.session:
             token = self.request.get('token')
@@ -49,6 +50,7 @@ class BaseBlobstoreHandler(blobstore_handlers.BlobstoreUploadHandler):
                          "role": auth_data.group}
             self.session["user_info"] = json.dumps(user_info)
         return self.session.get("user_info")
+
 
 # From: https://webapp2.readthedocs.io/en/latest/api/webapp2_extras/sessions.html
 class BaseHandler(webapp2.RequestHandler):
